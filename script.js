@@ -1,23 +1,13 @@
-function formatDateTime(date, locale, timeZone) {
-    const dateOptions = {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        timeZone: timeZone
-    };
-
+function formatTime(date, locale, timeZone, hour12 = false) {
     const timeOptions = {
         hour: '2-digit',
         minute: '2-digit',
         second: '2-digit',
-        hour12: false, // Sử dụng định dạng 24 giờ
+        hour12: hour12, // Sử dụng định dạng 12 giờ (AM/PM) nếu hour12 = true
         timeZone: timeZone
     };
 
-    const formattedDate = date.toLocaleDateString(locale, dateOptions);
-    const formattedTime = date.toLocaleTimeString(locale, timeOptions);
-
-    return `${formattedDate}, ${formattedTime}`;
+    return date.toLocaleTimeString(locale, timeOptions);
 }
 
 function updateClock(analogClockId, date) {
@@ -50,12 +40,12 @@ function updateTime() {
 
     // Giờ Việt Nam (UTC+7)
     const vietnamTime = new Date(now.toLocaleString("en-US", { timeZone: "Asia/Ho_Chi_Minh" }));
-    document.getElementById('vietnam-time').textContent = formatDateTime(vietnamTime, 'vi-VN', 'Asia/Ho_Chi_Minh');
+    document.getElementById('vietnam-time').textContent = formatTime(vietnamTime, 'vi-VN', 'Asia/Ho_Chi_Minh');
     updateClock('vietnam-analog', vietnamTime);
 
     // Giờ Lancaster, Mỹ (America/New_York)
     const lancasterTime = new Date(now.toLocaleString("en-US", { timeZone: "America/New_York" }));
-    document.getElementById('lancaster-time').textContent = formatDateTime(lancasterTime, 'en-US', 'America/New_York');
+    document.getElementById('lancaster-time').textContent = formatTime(lancasterTime, 'en-US', 'America/New_York', true); // Sử dụng AM/PM
     updateClock('lancaster-analog', lancasterTime);
 
     // Tính khoảng cách thời gian
