@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background: linear-gradient(135deg, #f4f4f4, #dcdcdc);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,17 +12,19 @@ body {
 .container {
     background-color: #fff;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     text-align: center;
     width: 100%;
     max-width: 600px;
+    animation: fadeIn 1s ease-in-out;
 }
 
 h1 {
     margin-bottom: 20px;
     font-size: 2em;
     color: #333;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .clocks {
@@ -32,46 +34,66 @@ h1 {
 }
 
 .clock-card {
-    background-color: #f9f9f9;
+    background: linear-gradient(135deg, #f9f9f9, #e0e0e0);
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     flex: 1;
     text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.clock-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
 .clock-card h2 {
     font-size: 1.5em;
     color: #555;
     margin-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .clock-card p {
     font-size: 1.2em;
     color: #333;
     margin: 0;
+    font-weight: bold;
+}
+
+/* Hiệu ứng fadeIn */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Responsive Design cho điện thoại */
 @media (max-width: 768px) {
     h1 {
-        font-size: 1.5em; /* Giảm kích thước tiêu đề */
+        font-size: 1.5em;
     }
 
     .clocks {
-        flex-direction: column; /* Xếp các khung dọc */
-        gap: 10px; /* Giảm khoảng cách giữa các khung */
+        flex-direction: column;
+        gap: 10px;
     }
 
     .clock-card {
-        padding: 15px; /* Giảm padding */
+        padding: 15px;
     }
 
     .clock-card h2 {
-        font-size: 1.3em; /* Giảm kích thước tiêu đề khung */
+        font-size: 1.3em;
     }
 
     .clock-card p {
-        font-size: 1em; /* Giảm kích thước thời gian */
+        font-size: 1em;
     }
 }
