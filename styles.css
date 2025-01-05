@@ -1,11 +1,13 @@
+/* Các phần CSS cũ giữ nguyên */
 body {
     font-family: Arial, sans-serif;
     background: linear-gradient(135deg, #f4f4f4, #dcdcdc);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
+    padding: 20px;
 }
 
 .container {
@@ -15,7 +17,7 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     text-align: center;
     width: 100%;
-    max-width: 800px;
+    max-width: 600px;
     animation: fadeIn 1s ease-in-out;
 }
 
@@ -57,20 +59,60 @@ h1 {
 .clock-card p {
     font-size: 1.2em;
     color: #333;
-    margin: 0;
+    margin: 10px 0 0;
     font-weight: bold;
 }
 
-/* Hiệu ứng fadeIn */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.analog-clock {
+    width: 120px;
+    height: 120px;
+    border: 8px solid #333;
+    border-radius: 50%;
+    position: relative;
+    margin: 0 auto 15px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.hand {
+    position: absolute;
+    background: #333;
+    transform-origin: 50% 100%;
+    transition: transform 0.5s cubic-bezier(0.4, 2.3, 0.6, 1);
+}
+
+.hour-hand {
+    width: 6px;
+    height: 30px;
+    top: 30px;
+    left: 57px;
+}
+
+.minute-hand {
+    width: 4px;
+    height: 40px;
+    top: 20px;
+    left: 58px;
+}
+
+.second-hand {
+    width: 2px;
+    height: 50px;
+    top: 10px;
+    left: 59px;
+    background: #ff4444;
+}
+
+/* Hiển thị khoảng cách thời gian */
+.time-difference {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #555;
+}
+
+.time-difference p {
+    margin: 0;
+    font-weight: bold;
 }
 
 /* Responsive Design cho điện thoại */
@@ -93,6 +135,30 @@ h1 {
     }
 
     .clock-card p {
+        font-size: 1em;
+    }
+
+    .analog-clock {
+        width: 100px;
+        height: 100px;
+    }
+
+    .hour-hand {
+        top: 25px;
+        left: 47px;
+    }
+
+    .minute-hand {
+        top: 15px;
+        left: 48px;
+    }
+
+    .second-hand {
+        top: 5px;
+        left: 49px;
+    }
+
+    .time-difference {
         font-size: 1em;
     }
 }
