@@ -1,0 +1,77 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 2em;
+    color: #333;
+}
+
+.clocks {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.clock-card {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    text-align: center;
+}
+
+.clock-card h2 {
+    font-size: 1.5em;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.clock-card p {
+    font-size: 1.2em;
+    color: #333;
+    margin: 0;
+}
+
+/* Responsive Design cho điện thoại */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.5em; /* Giảm kích thước tiêu đề */
+    }
+
+    .clocks {
+        flex-direction: column; /* Xếp các khung dọc */
+        gap: 10px; /* Giảm khoảng cách giữa các khung */
+    }
+
+    .clock-card {
+        padding: 15px; /* Giảm padding */
+    }
+
+    .clock-card h2 {
+        font-size: 1.3em; /* Giảm kích thước tiêu đề khung */
+    }
+
+    .clock-card p {
+        font-size: 1em; /* Giảm kích thước thời gian */
+    }
+}
