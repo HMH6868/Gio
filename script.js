@@ -4,10 +4,10 @@ function formatTime(date, locale, timeZone, hour12 = false) {
         minute: '2-digit',
         second: '2-digit',
         hour12: hour12, // Sử dụng định dạng 12 giờ (AM/PM) nếu hour12 = true
-        timeZone: timeZone
+        timeZone: timeZone,
     };
 
-    return date.toLocaleTimeString(locale, timeOptions);
+    return new Intl.DateTimeFormat(locale, timeOptions).format(date);
 }
 
 function updateClock(analogClockId, date) {
@@ -23,9 +23,9 @@ function updateClock(analogClockId, date) {
     const minuteDeg = (minutes * 6) + (seconds * 0.1);
     const secondDeg = seconds * 6;
 
-    hourHand.style.transform = `rotate(${hourDeg}deg)`;
-    minuteHand.style.transform = `rotate(${minuteDeg}deg)`;
-    secondHand.style.transform = `rotate(${secondDeg}deg)`;
+    if (hourHand) hourHand.style.transform = `rotate(${hourDeg}deg)`;
+    if (minuteHand) minuteHand.style.transform = `rotate(${minuteDeg}deg)`;
+    if (secondHand) secondHand.style.transform = `rotate(${secondDeg}deg)`;
 }
 
 function calculateTimeDifference(date1, date2) {
